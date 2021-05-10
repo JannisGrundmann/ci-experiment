@@ -1,0 +1,25 @@
+name: HTML
+
+on:
+  push:
+    branches:
+    - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Install wheel
+      run: pip install wheel
+    - name: Install pyLODE
+      run: pip install pylode
+    - name: Build HTML
+      run: mkdir -p public && pylode -i core_tensile_test_data.ttl -o public/index.html
+    - name: Deploy to GitHub Pages
+      uses: crazy-max/ghaction-github-pages@v2
+      with:
+        target_branch: gh-pages
+        build_dir: public
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
