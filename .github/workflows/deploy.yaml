@@ -15,8 +15,9 @@ jobs:
     - name: Install pyLODE
       run: pip install pylode
     - name: Build HTML
-      run: mkdir -p public && pylode -i core_tensile_test_data.ttl -o public/index.html
+      run: echo "TODO-validate-ttl" && mkdir -p public && pylode -i core_tensile_test_data.ttl -o public/index.html
     - name: Deploy to GitHub Pages
+      if: success()
       uses: crazy-max/ghaction-github-pages@v2
       with:
         target_branch: gh-pages
