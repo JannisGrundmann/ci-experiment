@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 #Copyright 2021, Leibniz-Institut für Werkstofforientierte Technologien - IWT.
 #All rights reserved.
 # 
