@@ -15,7 +15,7 @@ jobs:
     - name: Install requests and argparse 
       run: pip install requests argparse
     - name: Upload to Ontodocker
-      run: scripts/tiny-uploader/tiny-uploader.py -u https://ontodocker.material-digital.de -d ci-experiment -t core_tensile_test_data.ttl -j ${{ upload-jwt.UPLOAD_SECRET }}
+      run: scripts/tiny-uploader/tiny-uploader.py -u https://ontodocker.material-digital.de -d ci-experiment -t core_tensile_test_data.ttl -j ${{ secrets.UPLOAD_SECRET }}
     - name: Build HTML
       run: echo "TODO-validate-ttl" && mkdir -p public && pylode -i core_tensile_test_data.ttl -o public/index.html
     - name: Deploy to GitHub Pages
