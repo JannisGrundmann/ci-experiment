@@ -10,10 +10,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
-    - name: Install wheel
-      run: pip install wheel
-    - name: Install pyLODE
-      run: pip install pylode
+    - name: Install wheel and pyLODE 
+      run: pip install wheel pylode
+    - name: Install requests and argparse 
+      run: pip install requests argparse
+    - name: Upload to Ontodocker
+      run: scripts/tiny-uploader/tiny-uploader.py -u https://ontodocker.material-digital.de -d ci-experiment -t core_tensile_test_data.ttl -j ${{ upload-jwt.UPLOAD_SECRET }}
     - name: Build HTML
       run: echo "TODO-validate-ttl" && mkdir -p public && pylode -i core_tensile_test_data.ttl -o public/index.html
     - name: Deploy to GitHub Pages
